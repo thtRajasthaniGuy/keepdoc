@@ -2,13 +2,11 @@ import { createMMKV } from "react-native-mmkv";
 
 export const storage = createMMKV();
 
-export const setMMKV = async (
-  key: string,
-  value: boolean | string | number,
-) => {
-  await storage.set(key, value);
+export const setMMKV = (key: string, value: boolean | string | number) => {
+  storage.set(key, JSON.stringify(value));
 };
 
-export const getMMKV = async (key: string) => {
-  return await storage.getString(key);
+export const getMMKV = (key: string) => {
+  const raw = storage.getString(key);
+  return raw !== undefined ? JSON.parse(raw) : undefined;
 };
