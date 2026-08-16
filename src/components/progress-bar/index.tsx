@@ -30,12 +30,10 @@ export const ProgressBar = ({ progress, text }: ProgressBarProps) => {
 
   return (
     <View style={styles.container}>
-      {/* Progress bar */}
       <View style={styles.track}>
         <Animated.View style={[styles.progress, animatedStyle]} />
       </View>
 
-      {/* Label + percentage */}
       <View style={styles.info}>
         <Text style={styles.label}>{text}</Text>
 

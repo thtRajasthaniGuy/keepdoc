@@ -12,14 +12,14 @@ export const ProgressBarStyles = (theme: Theme) =>
     track: {
       height: 8,
       width: "100%",
-      backgroundColor: "#E5E5E5",
+      backgroundColor: theme.colors.surface,
       borderRadius: 4,
       overflow: "hidden",
     },
 
     progress: {
       height: "100%",
-      backgroundColor: "#000",
+      backgroundColor: theme.colors.primary,
       borderRadius: 4,
     },
 
@@ -32,11 +32,12 @@ export const ProgressBarStyles = (theme: Theme) =>
     },
 
     label: {
-      fontSize: 14,
+      fontSize: theme.fontSize.sm,
+      fontFamily: theme.fonts.medium,
     },
 
     percentage: {
-      fontSize: 14,
-      fontWeight: "600",
+      fontSize: theme.fontSize.sm,
+      fontFamily: theme.fonts.medium,
     },
   });
