@@ -1,9 +1,8 @@
 import { StatusBar } from "expo-status-bar";
-import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
-import { OnboardingScreen } from "./src/screens/onboarding";
 import { ThemeProvider } from "./src/theme/ThemeProvider";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
+import { Navigation } from "./src/navigations";
 
 SplashScreen.setOptions({
   duration: 1000,
@@ -23,19 +22,8 @@ export default function App() {
   }
   return (
     <ThemeProvider>
-      <View style={styles.container}>
-        <StatusBar style="auto" />
-        <OnboardingScreen />
-      </View>
+      <StatusBar style="auto" />
+      <Navigation />
     </ThemeProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});

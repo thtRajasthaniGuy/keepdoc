@@ -8,8 +8,12 @@ import { ProgressDots } from "../../components/progress-dot";
 import { ProgressBar } from "../../components/progress-bar";
 import { useTheme } from "../../theme/ThemeProvider";
 import { OnboardingStyles } from "./styles";
+import { NavigationProp, useNavigation } from "@react-navigation/native";
+import { RootStackParamList } from "../../navigations/types";
+import { resetTo } from "../../navigations/navigation";
 
 export const OnboardingScreen = () => {
+  const navigation = useNavigation<NavigationProp<RootStackParamList>>();
   const { theme } = useTheme();
   const styles = OnboardingStyles(theme);
   const [screenIndex, setScreenIndex] = useState<number>(0);
@@ -50,11 +54,12 @@ export const OnboardingScreen = () => {
           text={screenIndex === 2 ? "Get Started" : "Next"}
           onPress={() => {
             if (screenIndex === 2) {
+              resetTo(navigation, "Main");
               return;
             }
             setScreenIndex(screenIndex + 1);
           }}
-          disable={screenIndex === 2 ? true : false}
+          disable={false}
         />
       </View>
     </View>

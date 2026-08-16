@@ -20,18 +20,18 @@
     "plugins": [
       "expo-mlkit-ocr",
       "expo-build-properties",
-
       [
         "expo-camera",
         {
           "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera"
         }
       ],
-
       [
         "expo-font",
         {
-          "fonts": ["./assets/fonts/Quicksand-Medium-500.ttf"],
+          "fonts": [
+            "./assets/fonts/Quicksand-Medium-500.ttf"
+          ],
           "android": {
             "fonts": [
               {
@@ -63,7 +63,6 @@
           }
         }
       ],
-
       [
         "expo-splash-screen",
         {
@@ -72,7 +71,8 @@
           "backgroundColor": "#ffffff",
           "imageWidth": 578
         }
-      ]
+      ],
+      "@react-native-vector-icons/ionicons"
     ]
   }
 }
