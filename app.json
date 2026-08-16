@@ -7,19 +7,72 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.anonymous.keepdoc"
     },
     "android": {
-      "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
-        "foregroundImage": "./assets/android-icon-foreground.png",
-        "backgroundImage": "./assets/android-icon-background.png",
-        "monochromeImage": "./assets/android-icon-monochrome.png"
-      },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.anonymous.keepdoc"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "plugins": [
+      "expo-mlkit-ocr",
+      "expo-build-properties",
+
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera"
+        }
+      ],
+
+      [
+        "expo-font",
+        {
+          "fonts": ["./assets/fonts/Quicksand-Medium-500.ttf"],
+          "android": {
+            "fonts": [
+              {
+                "fontFamily": "Quicksand",
+                "fontDefinitions": [
+                  {
+                    "path": "./assets/fonts/Quicksand-Light-300.ttf",
+                    "weight": 300,
+                    "style": "normal"
+                  },
+                  {
+                    "path": "./assets/fonts/Quicksand-Regular-400.ttf",
+                    "weight": 400,
+                    "style": "normal"
+                  },
+                  {
+                    "path": "./assets/fonts/Quicksand-Medium-500.ttf",
+                    "weight": 500,
+                    "style": "normal"
+                  },
+                  {
+                    "path": "./assets/fonts/Quicksand-Bold-700.ttf",
+                    "weight": 700,
+                    "style": "normal"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ],
+
+      [
+        "expo-splash-screen",
+        {
+          "image": "./assets/splash.png",
+          "resizeMode": "contain",
+          "backgroundColor": "#ffffff",
+          "imageWidth": 578
+        }
+      ]
+    ]
   }
 }
