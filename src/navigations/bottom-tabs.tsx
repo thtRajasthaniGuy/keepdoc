@@ -14,6 +14,20 @@ export const BottomTabs = () => {
       screenOptions={({ route }) => ({
         headerShown: false,
 
+        tabBarStyle: {
+          backgroundColor: theme.colors.background,
+          borderTopWidth: 0,
+          elevation: 0,
+          height: 65,
+          paddingBottom: 8,
+          paddingTop: 8,
+        },
+
+        tabBarLabelStyle: {
+          fontFamily: theme.fonts.medium,
+          fontSize: 12,
+        },
+
         tabBarButton: (props) => (
           <Pressable
             {...(props as React.ComponentProps<typeof Pressable>)}
@@ -51,8 +65,6 @@ export const BottomTabs = () => {
       })}
     >
       <Tab.Screen name="Home" component={Dashboard} />
-
-      <Tab.Screen name="Search" component={Dashboard} />
 
       <Tab.Screen name="Safety" component={Dashboard} />
     </Tab.Navigator>

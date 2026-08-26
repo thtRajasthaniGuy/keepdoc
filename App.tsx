@@ -6,6 +6,8 @@ import { Navigation } from "./src/navigations";
 import { getMMKV } from "./src/utils/mmkv";
 import { navigationRef } from "./src/navigations/navigation";
 import { useEffect, useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { DefaultTheme } from "@react-navigation/native";
 
 SplashScreen.setOptions({
   duration: 1500,
@@ -36,8 +38,21 @@ export default function App() {
   }
   return (
     <ThemeProvider>
-      <StatusBar style="auto" />
-      <Navigation ref={navigationRef} initialState={initialState} />
+      <SafeAreaView style={{ flex: 1 }}>
+        <StatusBar style="auto" />
+        <Navigation
+          theme={{
+            ...DefaultTheme,
+            colors: {
+              ...DefaultTheme.colors,
+              background: "#F9F8F6",
+              card: "#F9F8F6",
+            },
+          }}
+          ref={navigationRef}
+          initialState={initialState}
+        />
+      </SafeAreaView>
     </ThemeProvider>
   );
 }

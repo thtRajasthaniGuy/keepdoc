@@ -1,4 +1,4 @@
-import { createStaticNavigation } from "@react-navigation/native";
+import { createStaticNavigation, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { OnboardingScreen } from "../screens/onboarding";
 import { BottomTabs } from "./bottom-tabs";

@@ -58,7 +58,7 @@ export const darkTheme = {
     primary: "#2d5a5e",
     secondary: "#e8e4df",
     tertiary: "#d97706",
-    background: "##F9F8F6",
+    background: "#F9F8F6",
     surface: "#F8FAFC",
 
     text: "#0F172A",
