@@ -63,8 +63,9 @@ export const DocCardStyles = (theme: Theme) =>
 
     date: {
       marginLeft: 8,
-      fontSize: 12,
-      color: "#888",
+      fontFamily: theme.fonts.medium,
+      fontSize: theme.fontSize.sm,
+      color: theme.colors.text,
     },
 
     rightSection: {

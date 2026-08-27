@@ -18,7 +18,7 @@ export const Header = ({ title, onSettingsPress }: Props) => {
     <View style={styles.container}>
       <Text style={styles.titleText}>{title}</Text>
 
-      <Pressable
+      {/* <Pressable
         style={({ pressed }) => [
           styles.iconButton,
           pressed && styles.iconButtonPressed,
@@ -35,7 +35,7 @@ export const Header = ({ title, onSettingsPress }: Props) => {
           size={22}
           color={theme.colors.primary}
         />
-      </Pressable>
+      </Pressable> */}
     </View>
   );
 };
