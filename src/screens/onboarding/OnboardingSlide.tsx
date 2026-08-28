@@ -1,22 +1,20 @@
 import React from "react";
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, ImageSourcePropType } from "react-native";
 import { useTheme } from "../../theme/ThemeProvider";
 import { OnboardingStyles } from "./styles";
 
-interface props {
+interface Props {
   title: string;
   subTitle: string;
+  image: ImageSourcePropType;
 }
-export const OnboardingSec = ({ title, subTitle }: props) => {
+
+export const OnboardingSlide = ({ title, subTitle, image }: Props) => {
   const { theme } = useTheme();
   const styles = OnboardingStyles(theme);
   return (
-    <View style={{ alignItems: "center", padding: 5, top: -10 }}>
-      <Image
-        style={styles.img}
-        source={require("../../../assets/icons/onboarding-sec.png")}
-      />
-
+    <View style={{ alignItems: "center" }}>
+      <Image style={styles.img} source={image} />
       <Text style={styles.title}>{title}</Text>
       <Text style={styles.subTitle}>{subTitle}</Text>
     </View>

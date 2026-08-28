@@ -5,8 +5,8 @@ export const ProgressBarStyles = (theme: Theme) =>
   StyleSheet.create({
     container: {
       width: "100%",
-      padding: 30,
-      marginBottom: 30,
+      paddingHorizontal: 20, // was padding: 30 — now matches text width above it
+      marginTop: 30,
     },
 
     track: {
@@ -34,10 +34,12 @@ export const ProgressBarStyles = (theme: Theme) =>
     label: {
       fontSize: theme.fontSize.sm,
       fontFamily: theme.fonts.medium,
+      color: theme.colors.secondary,
     },
 
     percentage: {
       fontSize: theme.fontSize.sm,
       fontFamily: theme.fonts.medium,
+      color: theme.colors.primary,
     },
   });
