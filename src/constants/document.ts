@@ -107,3 +107,58 @@ export const getDocumentStyle = (
     status: statusStyle,
   };
 };
+
+// documentTypes.ts
+export type DocumentCategory =
+  | "Bill"
+  | "Identity"
+  | "Financial"
+  | "Insurance"
+  | "Medical"
+  | "Legal"
+  | "Education"
+  | "Receipt"
+  | "Other";
+
+type CategoryStyle = {
+  icon: string;
+  color: string; // used for chip background/text and accents
+};
+
+// One place to add a new doc type's look — nothing else needs to change
+export const CATEGORY_STYLES: Record<DocumentCategory, CategoryStyle> = {
+  Bill: { icon: "document-text-outline", color: "#D97706" }, // amber
+  Identity: { icon: "id-card-outline", color: "#2563EB" }, // blue
+  Financial: { icon: "cash-outline", color: "#16A34A" }, // green
+  Insurance: { icon: "shield-checkmark-outline", color: "#7C3AED" }, // violet
+  Medical: { icon: "medkit-outline", color: "#DC2626" }, // red
+  Legal: { icon: "briefcase-outline", color: "#334155" }, // slate
+  Education: { icon: "school-outline", color: "#0891B2" }, // cyan
+  Receipt: { icon: "receipt-outline", color: "#DB2777" }, // pink
+  Other: { icon: "folder-outline", color: "#64748B" }, // gray
+};
+
+export type InfoField = {
+  icon: string;
+  label: string;
+  value: string;
+};
+
+export type DocumentDetails = {
+  imageUri: string;
+  category: DocumentCategory;
+  title: string;
+  description: string;
+  fields: InfoField[];
+};
+
+export type AppDocument = {
+  id: string;
+  imageUri: string;
+  category: DocumentType;
+  title: string;
+  description: string;
+  status: DocumentStatus;
+  date: string;
+  fields: InfoField[];
+};

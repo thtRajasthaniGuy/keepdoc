@@ -10,14 +10,21 @@ interface props {
   docType: string;
   date: string;
   docStatus: string;
+  onPress: () => void;
 }
 
-export const DocCard = ({ docName, docType, date, docStatus }: props) => {
+export const DocCard = ({
+  docName,
+  docType,
+  date,
+  docStatus,
+  onPress,
+}: props) => {
   const { theme } = useTheme();
   const styles = DocCardStyles(theme);
   const { document, status } = getDocumentStyle(docType, docStatus);
   return (
-    <View style={styles.card}>
+    <Pressable style={styles.card} onPress={onPress}>
       <View style={styles.iconContainer}>
         <Ionicons name={document.icon} size={28} color={document.color} />
       </View>
@@ -43,6 +50,6 @@ export const DocCard = ({ docName, docType, date, docStatus }: props) => {
 
         {/* <Text style={styles.status}>{status}</Text> */}
       </View>
-    </View>
+    </Pressable>
   );
 };

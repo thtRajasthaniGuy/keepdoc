@@ -7,8 +7,9 @@ interface props {
   onPress: () => void;
   style?: StyleProp<ViewStyle>;
   disable?: boolean;
+  hideIcon?: boolean;
 }
-export const Button = ({ text, onPress, style, disable }: props) => {
+export const Button = ({ text, onPress, style, disable, hideIcon }: props) => {
   const { theme } = useTheme();
   const styles = buttonStyles(theme);
   return (
@@ -18,7 +19,9 @@ export const Button = ({ text, onPress, style, disable }: props) => {
       disabled={disable}
     >
       <Text style={styles.text}>{text}</Text>
-      <Idol path={require("../../../assets/icons/right-Icon.png")} />
+      {hideIcon && (
+        <Idol path={require("../../../assets/icons/right-Icon.png")} />
+      )}
     </TouchableOpacity>
   );
 };

@@ -8,7 +8,7 @@ export const SettingCardStyles = (theme: Theme) =>
       minHeight: 72,
       flexDirection: "row",
       alignItems: "center",
-      paddingHorizontal: 16,
+      paddingHorizontal: 12,
       paddingVertical: 12,
       borderRadius: 16,
       marginVertical: 10,

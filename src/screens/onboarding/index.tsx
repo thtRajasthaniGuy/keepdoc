@@ -52,7 +52,7 @@ export const OnboardingScreen = () => {
           text={screenIndex === 2 ? "Get Started" : "Next"}
           onPress={() => {
             if (screenIndex === 2) {
-              setMMKV("onboarding-complete", true);
+              //setMMKV("onboarding-complete", true);
               resetTo("Main");
               return;
             }

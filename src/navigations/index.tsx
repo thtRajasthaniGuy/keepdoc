@@ -2,8 +2,10 @@ import { createStaticNavigation, DefaultTheme } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { OnboardingScreen } from "../screens/onboarding";
 import { BottomTabs } from "./bottom-tabs";
+import { UploadDocument } from "../screens/uploadDoc";
+import { DocumentDetails } from "../screens/DocumentDetails";
 
-const RootStack = createNativeStackNavigator({
+export const RootStack = createNativeStackNavigator({
   initialRouteName: "Onboarding",
   screenOptions: {
     headerShown: false,
@@ -16,6 +18,8 @@ const RootStack = createNativeStackNavigator({
         headerShown: false,
       },
     },
+    UploadDoc: UploadDocument,
+    DocumentDetails: DocumentDetails,
   },
 });
 
