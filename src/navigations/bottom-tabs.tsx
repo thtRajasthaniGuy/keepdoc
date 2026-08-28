@@ -4,6 +4,7 @@ import Ionicons from "@react-native-vector-icons/ionicons";
 import { Dashboard } from "../screens/dashboard";
 import { useTheme } from "../theme/ThemeProvider";
 import { Pressable } from "react-native";
+import { Settings } from "../screens/settings";
 
 const Tab = createBottomTabNavigator();
 
@@ -43,14 +44,8 @@ export const BottomTabs = () => {
               iconName = focused ? "folder-open" : "folder-outline";
               break;
 
-            case "Search":
-              iconName = focused ? "search" : "search-outline";
-              break;
-
-            case "Safety":
-              iconName = focused
-                ? "shield-checkmark"
-                : "shield-checkmark-outline";
+            case "Setting":
+              iconName = focused ? "settings" : "settings-outline";
               break;
 
             default:
@@ -66,7 +61,7 @@ export const BottomTabs = () => {
     >
       <Tab.Screen name="Home" component={Dashboard} />
 
-      <Tab.Screen name="Safety" component={Dashboard} />
+      <Tab.Screen name="Setting" component={Settings} />
     </Tab.Navigator>
   );
 };
