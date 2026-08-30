@@ -8,6 +8,7 @@ import { ProgressBar } from "../../components/progress-bar";
 import { useTheme } from "../../theme/ThemeProvider";
 import { OnboardingStyles } from "./styles";
 import { resetTo } from "../../navigations/navigation";
+import { setMMKV } from "../../utils/mmkv";
 
 const SLIDES = [
   {
@@ -56,6 +57,7 @@ export const OnboardingScreen = () => {
             onPress={() => {
               if (isLast) {
                 resetTo("Main");
+                setMMKV("onboarding-complete", true);
                 return;
               }
               setScreenIndex(screenIndex + 1);

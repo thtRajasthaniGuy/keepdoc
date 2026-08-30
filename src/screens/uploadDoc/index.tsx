@@ -15,6 +15,9 @@ import { useTheme } from "../../theme/ThemeProvider";
 import { Header } from "../../components/header";
 import { Button } from "../../components/button";
 import { UploadDocumentStyles } from "./styles";
+import { docParser } from "../../utils/docParser";
+import { analyzeDoc, getLLMInfo } from "../../modelManager";
+import llmContextService from "../../modelManager/llmContext";
 
 type ProcessingState = "processing" | "done";
 
@@ -95,7 +98,7 @@ const AiProcessingIndicator = ({ state }: { state: ProcessingState }) => {
   );
 };
 
-export const UploadDocument = () => {
+export const UploadDocument = ({ route }: any) => {
   const { theme } = useTheme();
   const styles = UploadDocumentStyles(theme);
   const navigation = useNavigation();
@@ -103,9 +106,68 @@ export const UploadDocument = () => {
   const [state, setState] = useState<ProcessingState>("processing");
 
   useEffect(() => {
-    const timer = setTimeout(() => setState("done"), 5000);
-    return () => clearTimeout(timer);
-  }, []);
+    const analyzeDocument = async () => {
+      try {
+        if (!route) return;
+
+        const context = await llmContextService.getLLMContext();
+
+        const extractData = await docParser(route.params.uri);
+        //console.log("extractData.slice(0, 50)", extractData.slice(0, 1500));
+        const testText = `
+Employee Leave Policy
+
+Employees receive 24 days of paid leave per year.
+Employees must request leave at least 3 days in advance.
+Medical leave requires a doctor's certificate for absences longer than 2 days.
+The leave request must be approved by the employee's manager.
+Unused leave can be carried forward for up to 12 months.
+`;
+        await analyzeDoc(context, extractData.slice(0, 1000));
+        //await analyzeDoc(context, testText);
+
+        setState("done");
+      } catch (err) {
+        console.log("Document analysis error:", err);
+      }
+    };
+
+    analyzeDocument();
+  }, [route]);
+  // useEffect(() => {
+  //   const initializeLLM = async () => {
+  //     llmContext
+  //       .then(async () => {
+  //         await loadModel();
+  //       })
+  //       .catch((err) => {
+  //         console.log("loading llm context error", err);
+  //       });
+  //   };
+  //   initializeLLM();
+  // }, []);
+  // const loadModel = async () => {
+  //   await getLLMInfo();
+  // };
+
+  // useEffect(() => {
+  //   const getTextFrom = async () => {
+  //     llmContext
+  //       .then(async () => {
+  //         if (route) {
+  //           const extractData = await docParser(route?.params?.uri);
+  //           const llmContext = llmContextService.getLLMContext();
+  //           await analyzeDoc(llmContext, extractData.slice(0, 50));
+  //           setState("done");
+  //         }
+  //       })
+  //       .catch((err) => {
+  //         console.log("loading llm context error", err);
+  //       });
+  //   };
+
+  //   getTextFrom();
+  // }, [llmContext]);
 
   return (
     <View style={styles.container}>
