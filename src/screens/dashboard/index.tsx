@@ -16,7 +16,6 @@ import type { AppDocument } from "../../constants/document";
 
 type NavigationProp = NativeStackNavigationProp<any>;
 import { DocumentType, DocumentStatus } from "../../constants/document";
-import Toast from "react-native-toast-message";
 const dummyDocs: AppDocument[] = [
   // Medical
   {
@@ -424,11 +423,6 @@ export const Dashboard = () => {
   const [isPicking, setIsPicking] = useState(false);
 
   useEffect(() => {
-    Toast.show({
-      type: "success",
-      text1: "Hello",
-      text2: "This is some something 👋",
-    });
     if (!search) {
       setDummyData(dummyDocs);
     } else {
@@ -447,11 +441,10 @@ export const Dashboard = () => {
 
   const handleUploadPress = useCallback(async () => {
     if (isPicking) return;
-
     try {
       setIsPicking(true);
       const result = await DocumentPicker.getDocumentAsync({
-        type: ["application/pdf", "image/*"],
+        type: ["application/pdf"],
         copyToCacheDirectory: true,
         multiple: false,
       });

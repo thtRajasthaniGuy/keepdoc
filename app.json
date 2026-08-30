@@ -62,7 +62,30 @@
           "imageWidth": 578
         }
       ],
-      "@react-native-vector-icons/ionicons"
-    ]
+      "@react-native-vector-icons/ionicons",
+      [
+        "expo-file-system",
+        {
+          "supportsOpeningDocumentsInPlace": true,
+          "enableFileSharing": true
+        }
+      ],
+      ["llama.rn"],
+      "expo-asset",
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
+      ]
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "255dd47c-7b32-4741-8324-39be9cd07070"
+      }
+    },
+    "owner": "govind302034"
   }
 }
